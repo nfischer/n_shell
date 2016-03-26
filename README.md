@@ -9,7 +9,7 @@ This was inspired by (and forked from) [n\_](https://github.com/borisdiakur/n_).
 It's recommended to install this package globally:
 
 ```Bash
-$ npm install -g github:nfischer/n_shell
+$ npm install -g n_shell
 ```
 
 ## Usage:
