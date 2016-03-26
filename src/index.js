@@ -24,6 +24,7 @@ var replServer = repl.start({
 var HISTORY_FILE = path.join(osHomedir(), '.n_shell_history');
 replHistory(replServer, HISTORY_FILE);
 
+argv.no_global = argv.no_global || argv.local || argv.n;
 if (argv.no_global) {
   if (typeof argv.no_global !== 'string')
     argv.no_global = 'shell';

@@ -78,3 +78,16 @@ bash $ n_shell
 Warning: using shelljs found at /path/to/dir/node_modules/shelljs
 shelljs $
 ```
+
+## Options
+
+ - `--global`: Start a node REPL with the equivalent of
+   `require('shelljs/global')`. This is the default behavior.
+ - `--no_global <PREFIX>`, `--local <PREFIX>`, `-n <PREFIX>`: Start a node REPL
+   with the equivalent of `var <PREFIX> = require('shelljs')`. `<PREFIX>`
+   defaults to `shell`, if not provided.
+ - `--use_strict`: enforce strict mode (default is false)
+
+## History
+
+Similarly to `n_`, `n_shell` stores REPL history under `~/.n_shell_history`.
