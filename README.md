@@ -36,7 +36,7 @@ No problem:
 
 ```javascript
 bash $ n_shell --no_global
-shelljs $ typeof ls
+shelljs $ typeof ls // not in the global namespace
 'undefined'
 shelljs $ shell.ls()
 [ 'LICENSE',
@@ -83,9 +83,9 @@ shelljs $
 
  - `--global`: Start a node REPL with the equivalent of
    `require('shelljs/global')`. This is the default behavior.
- - `--no_global <PREFIX>`, `--local <PREFIX>`, `-n <PREFIX>`: Start a node REPL
-   with the equivalent of `var <PREFIX> = require('shelljs')`. `<PREFIX>`
-   defaults to `shell`, if not provided.
+ - `--no_global [PREFIX]`, `--local [PREFIX]`, `-n [PREFIX]`: Start a node REPL
+   with the equivalent of `var PREFIX = require('shelljs')`. `PREFIX`
+   defaults to `shell`, if not specified.
  - `--use_strict`: enforce strict mode (default is false)
 
 ## History
