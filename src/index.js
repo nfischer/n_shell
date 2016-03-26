@@ -1,0 +1,37 @@
+'use strict';
+
+var repl = require('repl');
+var argv = require('minimist')(process.argv.slice(2));
+var replHistory = require('repl.history');
+var osHomedir = require('os-homedir');
+var path = require('path');
+
+var shell;
+try {
+  var localShellJS = path.resolve('./node_modules/shelljs');
+  shell = require('require-relative')(localShellJS, process.cwd());
+  console.warn('Warning: using shelljs found at ' + localShellJS);
+} catch (e) {
+  shell = require('shelljs');
+}
+
+var replServer = repl.start({
+  prompt: "shelljs $ ",
+  replMode: process.env.NODE_REPL_MODE === 'strict' || argv['use_strict'] ? repl.REPL_MODE_STRICT : repl.REPL_MODE_MAGIC
+});
+
+// save repl history
+var HISTORY_FILE = path.join(osHomedir(), '.n_shell_history');
+replHistory(replServer, HISTORY_FILE);
+
+if (argv.no_global) {
+  if (typeof argv.no_global !== 'string')
+    argv.no_global = 'shell';
+  replServer.context[argv.no_global] = shell;
+} else {
+  for (var key in shell) {
+    replServer.context[key] = shell[key];
+  }
+}
+
+module.exports = replServer;
