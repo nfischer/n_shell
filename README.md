@@ -87,6 +87,14 @@ shelljs $
    with the equivalent of `var PREFIX = require('shelljs')`. `PREFIX`
    defaults to `shell`, if not specified.
  - `--use_strict`: enforce strict mode (default is false)
+ - `--prompt <FORMAT>`: use this format to generate the REPL prompt. Default is
+    "`shelljs %v%l $ `"
+    - `%v`: show the current version (from `package.json`)
+    - `%l`: show ` [local]` if this is installed from a local module (whenever
+      the warning message above would be printed)
+    - Warn more formats options? [Let me
+      know](https://github.com/nfischer/n_shell/issues/new) or [send me a
+      PR](https://github.com/nfischer/n_shell/compare)
 
 ## History
 

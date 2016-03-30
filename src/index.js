@@ -7,16 +7,34 @@ var osHomedir = require('os-homedir');
 var path = require('path');
 
 var shell;
+var json;
+var isLocal;
 try {
   var localShellJS = path.resolve('./node_modules/shelljs');
   shell = require('require-relative')(localShellJS, process.cwd());
+  json = require(path.join(localShellJS, 'package.json'));
+  isLocal = true;
   console.warn('Warning: using shelljs found at ' + localShellJS);
 } catch (e) {
   shell = require('shelljs');
+  json = require('shelljs/package.json')
+  isLocal = false;
 }
 
+// Create the prompt
+var myprompt = argv.prompt || 'shelljs %v%l $ ';
+myprompt = myprompt.replace(/%./g, (function() {
+  var option = {
+    '%v': json.version,
+    '%l': (isLocal ? ' [local]' : '')
+  };
+  return function(match) {
+    return option[match];
+  }
+})());
+
 var replServer = repl.start({
-  prompt: "shelljs $ ",
+  prompt: myprompt,
   replMode: process.env.NODE_REPL_MODE === 'strict' || argv['use_strict'] ? repl.REPL_MODE_STRICT : repl.REPL_MODE_MAGIC
 });
 
