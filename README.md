@@ -89,6 +89,7 @@ shelljs $
  - `--use_strict`: enforce strict mode (default is false)
  - `--prompt <FORMAT>`: use this format to generate the REPL prompt. Default is
     "`shelljs %v%l $ `"
+    - `%%`: a literal `%` sign
     - `%v`: show the current version (from `package.json`)
     - `%l`: show ` [local]` if this is installed from a local module (whenever
       the warning message above would be printed)

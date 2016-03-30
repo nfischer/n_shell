@@ -25,6 +25,7 @@ try {
 var myprompt = argv.prompt || 'shelljs %v%l $ ';
 myprompt = myprompt.replace(/%./g, (function() {
   var option = {
+    '%%': '%',
     '%v': json.version,
     '%l': (isLocal ? ' [local]' : '')
   };
