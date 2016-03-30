@@ -93,7 +93,7 @@ shelljs $
     - `%v`: show the current version (from `package.json`)
     - `%l`: show ` [local]` if this is installed from a local module (whenever
       the warning message above would be printed)
-    - Warn more formats options? [Let me
+    - Want more formats options? [Let me
       know](https://github.com/nfischer/n_shell/issues/new) or [send me a
       PR](https://github.com/nfischer/n_shell/compare)
 
