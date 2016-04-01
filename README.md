@@ -79,6 +79,14 @@ Warning: using shelljs found at /path/to/dir/node_modules/shelljs
 shelljs $
 ```
 
+## Available commands
+
+This supports any command that ShellJS supports. It also adds some extra
+commands, for convenience. So far, this adds:
+
+ - `clear()`/`shell.clear()` (from
+   [bahamas10/node-clear](https://github.com/bahamas10/node-clear))
+
 ## Options
 
  - `--global`: Start a node REPL with the equivalent of

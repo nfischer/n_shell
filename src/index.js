@@ -20,6 +20,7 @@ try {
   json = require('shelljs/package.json')
   isLocal = false;
 }
+shell.clear = require('clear'); // add in clear command, for convenience
 
 // Create the prompt
 var myprompt = argv.prompt || 'shelljs %v%l $ ';
