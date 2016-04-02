@@ -1,4 +1,4 @@
-# n_shell
+# n\_shell
 
 A node REPL with ShellJS loaded by default.
 
@@ -107,22 +107,7 @@ commands, for convenience. So far, this adds:
  - `--inspect`: an experimental switch to add a `.inspect()` method to the
     output of each command, to make it look less cluttered. This doesn't change
     the return values, it only changes what they look like on the REPL. For
-    example:
-
-    ```
-    shelljs $ ls();
-    bar
-    file.txt
-    foo
-
-    shelljs $ cat('file.txt');
-    hello world
-
-    shelljs $ cat('file.txt').stdout; // all the attributes from before still exist
-    'hello world\n'
-    ```
-
-    instead of the very messy-looking (on shelljs v0.7):
+    example, this transforms this very messy-looking ShellJS v0.7 output:
 
     ```javascript
     shelljs $ ls();
@@ -147,13 +132,29 @@ commands, for convenience. So far, this adds:
       grep: [Function],
       exec: [Function] }
 
+    shelljs $ cat('file.txt').stdout;
+    'hello world\n'
+    ```
+
+    into something more shell-like:
+
+    ```javascript
+    shelljs $ ls();
+    bar
+    file.txt
+    foo
+
+    shelljs $ cat('file.txt');
+    hello world
+
     shelljs $ cat('file.txt').stdout; // all the attributes from before still exist
     'hello world\n'
     ```
 
     **Note**: the `--inspect` option is not availalbe for `--local` mode. Also,
-    if you like the feature, let me know and it may work its way into ShellJS
-    itself if it has enough support.
+    if you like the feature, let me know and it may work its way upstream into
+    ShellJS if it has enough support. Credit for the idea goes to
+    [piranna](https://github.com/piranna).
 
 ## History
 
