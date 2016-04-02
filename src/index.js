@@ -20,7 +20,9 @@ try {
   json = require('shelljs/package.json')
   isLocal = false;
 }
-shell.clear = require('clear'); // add in clear command, for convenience
+
+// Polyfills for commands that shelljs doesn't have yet
+if (!shell.clear) shell.clear = require('clear');
 
 // Create the prompt
 var myprompt = argv.prompt || 'shelljs %v%l $ ';
