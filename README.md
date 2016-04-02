@@ -92,11 +92,11 @@ commands, for convenience. So far, this adds:
  - `--global`: Start a node REPL with the equivalent of
    `require('shelljs/global')`. This is the default behavior.
  - `--no_global [PREFIX]`, `--local [PREFIX]`, `-n [PREFIX]`: Start a node REPL
-   with the equivalent of `var PREFIX = require('shelljs')`. `PREFIX`
-   defaults to `shell`, if not specified.
+   with the equivalent of `var PREFIX = require('shelljs')`. `PREFIX` defaults
+   to `shell`, if not specified.
  - `--use_strict`: enforce strict mode (default is false)
  - `--prompt <FORMAT>`: use this format to generate the REPL prompt. Default is
-    "`shelljs %v%l $ `"
+   "`shelljs %v%l $ `"
     - `%%`: a literal `%` sign
     - `%v`: show the current version (from `package.json`)
     - `%l`: show ` [local]` if this is installed from a local module (whenever
@@ -104,6 +104,56 @@ commands, for convenience. So far, this adds:
     - Want more formats options? [Let me
       know](https://github.com/nfischer/n_shell/issues/new) or [send me a
       PR](https://github.com/nfischer/n_shell/compare)
+ - `--inspect`: an experimental switch to add a `.inspect()` method to the
+    output of each command, to make it look less cluttered. This doesn't change
+    the return values, it only changes what they look like on the REPL. For
+    example:
+
+    ```
+    shelljs $ ls();
+    bar
+    file.txt
+    foo
+
+    shelljs $ cat('file.txt');
+    hello world
+
+    shelljs $ cat('file.txt').stdout; // all the attributes from before still exist
+    'hello world\n'
+    ```
+
+    instead of the very messy-looking (on shelljs v0.7):
+
+    ```javascript
+    shelljs $ ls();
+    [ 'bar',
+      'file.txt',
+      'foo',
+      stdout: 'bar\nfile.txt\nfoo\n',
+      stderr: null,
+      code: 0,
+      to: [Function],
+      // Even more methods...
+      grep: [Function],
+      exec: [Function] }
+
+    shelljs $ cat('file.txt');
+    { [String: 'hello world\n']
+      stdout: 'hello world\n',
+      stderr: null,
+      code: 0,
+      to: [Function],
+      // Even more methods...
+      grep: [Function],
+      exec: [Function] }
+
+    shelljs $ cat('file.txt').stdout; // all the attributes from before still exist
+    'hello world\n'
+    ```
+
+    **Note**: the `--inspect` option is not availalbe for `--local` mode. Also,
+    if you like the feature, let me know and it may work its way into ShellJS
+    itself if it has enough support.
 
 ## History
 

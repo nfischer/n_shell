@@ -46,6 +46,29 @@ var replServer = repl.start({
 var HISTORY_FILE = path.join(osHomedir(), '.n_shell_history');
 replHistory(replServer, HISTORY_FILE);
 
+function wrap(fun, key) {
+  if (typeof fun !== 'function') {
+    return fun; // not a function
+  } else {
+    return function() {
+      var ret = fun.apply(this, arguments);
+      if (ret instanceof Object) {
+        // Polyfill .inspect() method
+        if (!ret.inspect) ret.inspect = function() {
+          if (key === 'echo' || key === 'exec') return '';
+          if (this.hasOwnProperty('stdout'))
+            return this.stdout;
+          else if (Array.isArray(this))
+            return this.join('\n');
+          else
+            return this;
+        };
+      }
+      return ret;
+    };
+  }
+}
+
 argv.no_global = argv.no_global || argv.local || argv.n;
 if (argv.no_global) {
   if (typeof argv.no_global !== 'string')
@@ -53,7 +76,7 @@ if (argv.no_global) {
   replServer.context[argv.no_global] = shell;
 } else {
   for (var key in shell) {
-    replServer.context[key] = shell[key];
+    replServer.context[key] = argv.inspect ? wrap(shell[key], key) : shell[key];
   }
 }
 
