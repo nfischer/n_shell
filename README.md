@@ -151,7 +151,7 @@ commands, for convenience. So far, this adds:
     'hello world\n'
     ```
 
-    **Note**: the `--inspect` option is not availalbe for `--local` mode. Also,
+    **Note**: the `--inspect` option is not available for `--local` mode. Also,
     if you like the feature, let me know and it may work its way upstream into
     ShellJS if it has enough support. Credit for the idea goes to
     [piranna](https://github.com/piranna).
