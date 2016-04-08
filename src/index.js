@@ -56,6 +56,8 @@ function wrap(fun, key) {
         // Polyfill .inspect() method
         if (!ret.inspect) ret.inspect = function() {
           if (key === 'echo' || key === 'exec') return '';
+          if (key === 'pwd' || key === 'which')
+            return this.stdout.match(/\n$/) ? this.stdout : this.stdout + '\n';
           if (this.hasOwnProperty('stdout'))
             return this.stdout;
           else if (Array.isArray(this))
