@@ -1,6 +1,6 @@
 {
   "name": "n_shell",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A node REPL with ShellJS loaded by default",
   "main": "index.js",
   "bin": {
