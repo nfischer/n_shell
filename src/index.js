@@ -50,7 +50,7 @@ function wrap(fun, key) {
   if (typeof fun !== 'function') {
     return fun; // not a function
   } else {
-    return function() {
+    var outerRet = function() {
       var ret = fun.apply(this, arguments);
       if (ret instanceof Object) {
         // Polyfill .inspect() method
@@ -68,6 +68,8 @@ function wrap(fun, key) {
       }
       return ret;
     };
+    outerRet.inspect = function () { return this(); };
+    return outerRet;
   }
 }
 
