@@ -68,19 +68,27 @@ function wrap(fun, key) {
       }
       return ret;
     };
-    outerRet.inspect = function () { return this(); };
+    outerRet.inspect = outerRet.inspect || function () { return this(); };
     return outerRet;
   }
 }
 
 argv.no_global = argv.no_global || argv.local || argv.n;
+
+// Add inspect() method, if it doesn't exist
+if (argv.inspect) {
+  for (var key in shell) {
+    shell[key] = wrap(shell[key], key);
+  }
+}
+
 if (argv.no_global) {
   if (typeof argv.no_global !== 'string')
     argv.no_global = 'shell';
   replServer.context[argv.no_global] = shell;
 } else {
   for (var key in shell) {
-    replServer.context[key] = argv.inspect ? wrap(shell[key], key) : shell[key];
+    replServer.context[key] = shell[key];
   }
 }
 

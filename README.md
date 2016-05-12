@@ -108,11 +108,11 @@ commands, for convenience. So far, this adds:
       know](https://github.com/nfischer/n_shell/issues/new) or [send me a
       PR](https://github.com/nfischer/n_shell/compare)
  - `--inspect`: an experimental switch to add a `.inspect()` method to the
-    output of each command, to make it less cluttered and more shell-like. This
-    doesn't change the return values, it only changes what they look like on the
-    REPL. This is recommended for shelljs v0.7+.
-    **Note**: the `--inspect` option is not available for `--local` mode.
-    Credit for the idea goes to [piranna](https://github.com/piranna).
+    output of each command. The return values are still ShellStrings, but appear
+    more readable and shell-like. Also, commands with no arguments can be
+    invoked without parentheses, such as `shell.pwd` and `shell.ls`. Recommended
+    for ShellJS v0.7+. Credit for the idea goes to
+    [piranna](https://github.com/piranna).
 
 ## History
 
