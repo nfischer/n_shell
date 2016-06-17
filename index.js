@@ -77,7 +77,7 @@ function wrap(fun, key) {
 argv.no_global = argv.no_global || argv.local || argv.n;
 
 // Add inspect() method, if it doesn't exist
-if (argv.inspect) {
+if (!argv.noinspect) {
   for (var key in shell) {
     shell[key] = wrap(shell[key], key);
   }

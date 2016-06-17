@@ -107,12 +107,14 @@ commands, for convenience. So far, this adds:
     - Want more formats options? [Let me
       know](https://github.com/nfischer/n_shell/issues/new) or [send me a
       PR](https://github.com/nfischer/n_shell/compare)
- - `--inspect`: an experimental switch to add a `.inspect()` method to the
-    output of each command. The return values are still ShellStrings, but appear
-    more readable and shell-like. Also, commands with no arguments can be
-    invoked without parentheses, such as `shell.pwd` and `shell.ls`. Recommended
-    for ShellJS v0.7+. Credit for the idea goes to
-    [piranna](https://github.com/piranna).
+ - `--noinspect`: disable the default `--inspect` behavior. This provides
+   less-readable REPL output, but behaves just as a standard Node REPL would.
+ - `--inspect` (default): an experimental switch to add a `.inspect()` method to
+   the output of each command. The return values are still ShellStrings, but
+   appear more readable and shell-like. Also, commands with no arguments can be
+   invoked without parentheses, such as `shell.pwd` and `shell.ls`. Recommended
+   for ShellJS v0.7+. Credit for the idea goes to
+   [piranna](https://github.com/piranna).
 
 ## History
 
