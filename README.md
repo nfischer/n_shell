@@ -18,58 +18,59 @@ $ npm install -g n_shell
 
 ## Usage:
 
-Invoking `n_shell` starts a node REPL with ShellJS required globally:
+Invoking `n_shell` starts a node REPL with ShellJS required globally, with
+shell-like output:
 
-```javascript
+```Bash
 bash $ n_shell
 shelljs $ ls()
-[ 'LICENSE',
-  'README.md',
-  'bin',
-  'node_modules',
-  'package.json',
-  'src',
-  'tmp' ]
+LICENSE
+README.md
+bin
+node_modules
+package.json
+src
+tmp
 shelljs $ pwd()
-'/path/to/dir'
+/path/to/dir
 ```
 
 ### But I don't want to use `shelljs/global`
 
 No problem:
 
-```javascript
+```
 bash $ n_shell --no_global
 shelljs $ typeof ls // not in the global namespace
 'undefined'
 shelljs $ shell.ls() // uses 'shell' prefix
-[ 'LICENSE',
-  'README.md',
-  'bin',
-  'node_modules',
-  'package.json',
-  'src',
-  'tmp' ]
+LICENSE
+README.md
+bin
+node_modules
+package.json
+src
+tmp
 shelljs $ shell.pwd()
-'/path/to/dir'
+/path/to/dir
 ```
 
 ### But I want to use a different namespace
 
 You're covered:
 
-```javascript
+```
 bash $ n_shell --no_global=$
 shelljs $ $.ls() // now uses '$' as the prefix
-[ 'LICENSE',
-  'README.md',
-  'bin',
-  'node_modules',
-  'package.json',
-  'src',
-  'tmp' ]
+LICENSE
+README.md
+bin
+node_modules
+package.json
+src
+tmp
 shelljs $ $.pwd()
-'/path/to/dir'
+/path/to/dir
 ```
 
 ### But I want to use a different version of ShellJS
@@ -81,6 +82,30 @@ Just install that version locally (`npm install shelljs`) and start up
 bash $ n_shell
 Warning: using shelljs found at /path/to/dir/node_modules/shelljs
 shelljs $
+```
+
+### But I want plain JavaScript output
+
+```javascript
+bash $ n_shell --noinspect
+shelljs $ ls()
+[ 'LICENSE',
+  'README.md',
+  'index.js',
+  'node_modules',
+  'package.json',
+  stdout: 'LICENSE\nREADME.md\nindex.js\nnode_modules\npackage.json\n',
+  stderr: null,
+  code: 0,
+  to: [Function],
+  toEnd: [Function],
+  cat: [Function],
+  head: [Function],
+  sed: [Function],
+  sort: [Function],
+  tail: [Function],
+  grep: [Function],
+  exec: [Function] ]
 ```
 
 ## Available commands
