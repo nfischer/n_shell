@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict';
 
 var repl = require('repl');
@@ -17,7 +18,7 @@ try {
   console.warn('Warning: using shelljs found at ' + localShellJS);
 } catch (e) {
   shell = require('shelljs');
-  json = require('shelljs/package.json')
+  json = require('shelljs/package.json');
   isLocal = false;
 }
 
@@ -34,12 +35,12 @@ myprompt = myprompt.replace(/%./g, (function() {
   };
   return function(match) {
     return option[match];
-  }
+  };
 })());
 
 var replServer = repl.start({
   prompt: myprompt,
-  replMode: process.env.NODE_REPL_MODE === 'strict' || argv['use_strict'] ? repl.REPL_MODE_STRICT : repl.REPL_MODE_MAGIC
+  replMode: process.env.NODE_REPL_MODE === 'strict' || argv.use_strict ? repl.REPL_MODE_STRICT : repl.REPL_MODE_MAGIC
 });
 
 // save repl history
