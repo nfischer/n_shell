@@ -11,11 +11,12 @@ var shell;
 var json;
 var isLocal;
 try {
-  var localShellJS = path.resolve('./node_modules/shelljs');
+  if (argv.path[0] === '~')
+    argv.path = argv.path.replace('~', osHomedir());
+  var localShellJS = path.resolve(argv.path);
   shell = require('require-relative')(localShellJS, process.cwd());
   json = require(path.join(localShellJS, 'package.json'));
   isLocal = true;
-  console.warn('Warning: using shelljs found at ' + localShellJS);
 } catch (e) {
   shell = require('shelljs');
   json = require('shelljs/package.json');
@@ -79,7 +80,9 @@ argv.no_global = argv.no_global || argv.local || argv.n;
 // Add inspect() method, if it doesn't exist
 if (!argv.noinspect) {
   for (var key in shell) {
-    shell[key] = wrap(shell[key], key);
+    try {
+      shell[key] = wrap(shell[key], key);
+    } catch (e) {}
   }
 }
 

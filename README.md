@@ -76,11 +76,10 @@ shelljs $ $.pwd()
 ### But I want to use a different version of ShellJS
 
 Just install that version locally (`npm install shelljs`) and start up
-`n_shell`. You should see a warning message like this:
+`n_shell` with the `--path` option:
 
 ```
-bash $ n_shell
-Warning: using shelljs found at /path/to/dir/node_modules/shelljs
+bash $ n_shell --path=node_modules/shelljs
 shelljs $
 ```
 
@@ -134,6 +133,8 @@ commands, for convenience. So far, this adds:
       PR](https://github.com/nfischer/n_shell/compare)
  - `--noinspect`: disable the default `--inspect` behavior. This provides
    less-readable REPL output, but behaves just as a standard Node REPL would.
+ - `--path=path/to/shelljs/`: the argument should be a path to a folder
+   containing a ShellJS package.
  - `--inspect` (default): an experimental switch to add a `.inspect()` method to
    the output of each command. The return values are still ShellStrings, but
    appear more readable and shell-like. Also, commands with no arguments can be
