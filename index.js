@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
+// ShellJS plugins
+require('shelljs-plugin-inspect');
+
 var repl = require('repl');
 var argv = require('minimist')(process.argv.slice(2));
 var replHistory = require('repl.history');
@@ -56,17 +59,18 @@ function wrap(fun, key) {
       var ret = fun.apply(this, arguments);
       if (ret instanceof Object) {
         // Polyfill .inspect() method
-        if (!ret.inspect) ret.inspect = function() {
-          if (key === 'echo' || key === 'exec') return '';
-          if (key === 'pwd' || key === 'which')
-            return this.stdout.match(/\n$/) ? this.stdout : this.stdout + '\n';
-          if (this.hasOwnProperty('stdout'))
-            return this.stdout;
-          else if (Array.isArray(this))
-            return this.join('\n');
-          else
-            return this;
-        };
+        function emptyInspect() {
+          return '';
+        }
+        var oldInspect = ret.inspect.bind(ret);
+        if (key === 'echo' || key === 'exec') {
+          ret.inspect = emptyInspect;
+        } else if (key === 'pwd' || key === 'which') {
+          ret.inspect = function () {
+            var oldResult = oldInspect();
+            return oldResult.match(/\n$/) ? oldResult : oldResult + '\n';
+          };
+        }
       }
       return ret;
     };
