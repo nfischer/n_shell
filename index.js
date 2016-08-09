@@ -3,6 +3,7 @@
 
 // ShellJS plugins
 require('shelljs-plugin-inspect');
+require('shelljs-plugin-clear');
 
 var repl = require('repl');
 var argv = require('minimist')(process.argv.slice(2));
@@ -25,9 +26,6 @@ try {
   json = require('shelljs/package.json');
   isLocal = false;
 }
-
-// Polyfills for commands that shelljs doesn't have yet
-if (!shell.clear) shell.clear = require('clear');
 
 // Create the prompt
 var myprompt = argv.prompt || 'shelljs %v%l $ ';
