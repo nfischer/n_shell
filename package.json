@@ -25,7 +25,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "clear": "0.0.1",
     "minimist": "^1.2.0",
     "os-homedir": "^1.0.1",
     "repl.history": "^0.1.3",
