@@ -114,8 +114,8 @@ shelljs $ ls()
 This supports any command that ShellJS supports. It also adds some extra
 commands, for convenience. So far, this adds:
 
- - `clear()`/`shell.clear()` (from
-   [bahamas10/node-clear](https://github.com/bahamas10/node-clear))
+ - `shell.clear()` (from
+   [shelljs-plugin-clear](https://github.com/nfischer/shelljs-plugin-clear))
 
 ## Options
 
