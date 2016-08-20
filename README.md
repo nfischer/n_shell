@@ -12,8 +12,6 @@ Give it a star [on Github](https://github.com/nfischer/n_shell)
 
 ## Installation:
 
-I recommend installing this package globally:
-
 ```Bash
 $ npm install -g n_shell
 ```
@@ -130,7 +128,7 @@ commands, for convenience. So far, this adds:
     - `%%`: a literal `%` sign
     - `%v`: show the current version (from `package.json`)
     - `%l`: show ` [local]` if this is using a local version of ShellJS
-    - Want more formats options? [Let me
+    - Want more format options? [Let me
       know](https://github.com/nfischer/n_shell/issues/new) or [send me a
       PR](https://github.com/nfischer/n_shell/compare)
  - `--noinspect`: disable the default `--inspect` behavior. This provides
