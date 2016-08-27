@@ -1,6 +1,7 @@
 # n\_shell
 
-[![npm](https://img.shields.io/npm/v/n_shell.svg?style=flat-square)](https://www.npmjs.com/package/n_shell)
+[![npm version](https://img.shields.io/npm/v/n_shell.svg?style=flat-square)](https://www.npmjs.com/package/n_shell)
+[![npm downloads](https://img.shields.io/npm/dt/n_shell.svg?style=flat-square)](https://www.npmjs.com/package/n_shell)
 
 A node REPL with ShellJS loaded by default.
 
