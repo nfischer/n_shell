@@ -4,6 +4,7 @@
 // ShellJS plugins
 require('shelljs-plugin-inspect');
 require('shelljs-plugin-clear');
+require('shelljs-plugin-sleep');
 
 var repl = require('repl');
 var argv = require('minimist')(process.argv.slice(2));

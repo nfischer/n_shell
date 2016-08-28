@@ -31,7 +31,8 @@
     "require-relative": "^0.8.7",
     "shelljs": "*",
     "shelljs-plugin-clear": "^0.1.0",
-    "shelljs-plugin-inspect": "^0.1.0"
+    "shelljs-plugin-inspect": "^0.1.0",
+    "shelljs-plugin-sleep": "^0.1.0"
   },
   "devDependencies": {
     "shelljs-release": "^0.2.0"

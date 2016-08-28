@@ -115,6 +115,8 @@ commands, for convenience. So far, this adds:
 
  - `shell.clear()` (from
    [shelljs-plugin-clear](https://github.com/nfischer/shelljs-plugin-clear))
+ - `shell.sleep()` (from
+   [shelljs-plugin-sleep](https://github.com/nfischer/shelljs-plugin-sleep))
 
 ## Options
 
