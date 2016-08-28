@@ -2,8 +2,9 @@
 'use strict';
 
 // ShellJS plugins
-require('shelljs-plugin-inspect');
 require('shelljs-plugin-clear');
+require('shelljs-plugin-inspect');
+require('shelljs-plugin-open');
 require('shelljs-plugin-sleep');
 
 var repl = require('repl');
