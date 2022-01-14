@@ -7,6 +7,7 @@ require('shelljs-plugin-inspect');
 require('shelljs-plugin-open');
 require('shelljs-plugin-sleep');
 
+var util = require('util');
 var repl = require('repl');
 var argv = require('minimist')(process.argv.slice(2));
 var replHistory = require('repl.history');
@@ -51,6 +52,9 @@ var replServer = repl.start({
 var HISTORY_FILE = path.join(osHomedir(), '.n_shell_history');
 replHistory(replServer, HISTORY_FILE);
 
+// Newer versions of node use a symbol called util.inspect.custom.
+var inspectAttribute = util.inspect.custom || 'inspect';
+
 function wrap(fun, key) {
   if (typeof fun !== 'function') {
     return fun; // not a function
@@ -62,11 +66,16 @@ function wrap(fun, key) {
         function emptyInspect() {
           return '';
         }
-        var oldInspect = ret.inspect.bind(ret);
+        var oldInspect;
+        if (ret[inspectAttribute]) {
+          oldInspect = ret[inspectAttribute].bind(ret);
+        } else {
+          oldInspect = function() { return ''; }
+        }
         if (key === 'echo' || key === 'exec') {
-          ret.inspect = emptyInspect;
+          ret[inspectAttribute] = emptyInspect;
         } else if (key === 'pwd' || key === 'which') {
-          ret.inspect = function () {
+          ret[inspectAttribute] = function () {
             var oldResult = oldInspect();
             return oldResult.match(/\n$/) ? oldResult : oldResult + '\n';
           };
@@ -74,7 +83,7 @@ function wrap(fun, key) {
       }
       return ret;
     };
-    outerRet.inspect = outerRet.inspect || function () { return this(); };
+    outerRet[inspectAttribute] = outerRet[inspectAttribute] || function () { return this(); };
     return outerRet;
   }
 }
