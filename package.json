@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "changelog": "shelljs-changelog",
     "release:major": "shelljs-release major",
     "release:minor": "shelljs-release minor",
     "release:patch": "shelljs-release patch"
@@ -36,6 +37,7 @@
     "shelljs-plugin-sleep": "^0.2.1"
   },
   "devDependencies": {
+    "shelljs-changelog": "^0.2.6",
     "shelljs-release": "^0.5.1"
   }
 }
