@@ -32,7 +32,7 @@
     "require-relative": "^0.8.7",
     "shelljs": "^0.8.5",
     "shelljs-plugin-clear": "^0.2.1",
-    "shelljs-plugin-inspect": "^0.2.1",
+    "shelljs-plugin-inspect": "^0.3.0",
     "shelljs-plugin-open": "^0.2.0",
     "shelljs-plugin-sleep": "^0.2.1"
   },
