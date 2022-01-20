@@ -6,6 +6,7 @@
 
 **Fixed bugs:**
 
+- fix: update shelljs-plugin-inspect [\#8](https://github.com/nfischer/n_shell/pull/8) ([nfischer](https://github.com/nfischer))
 - fix: use new attribute for repl inspection [\#7](https://github.com/nfischer/n_shell/pull/7) ([nfischer](https://github.com/nfischer))
 
 ## [v0.6.1](https://github.com/nfischer/n_shell/tree/v0.6.1) (2022-01-08)
