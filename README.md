@@ -1,5 +1,6 @@
 # n\_shell
 
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fnfischer%2Fn_shell%2Fbadge%3Fref%3Dmain&style=flat-square)](https://actions-badge.atrox.dev/nfischer/n_shell/goto?ref=main)
 [![npm version](https://img.shields.io/npm/v/n_shell.svg?style=flat-square)](https://www.npmjs.com/package/n_shell)
 [![npm downloads](https://img.shields.io/npm/dt/n_shell.svg?style=flat-square)](https://www.npmjs.com/package/n_shell)
 
