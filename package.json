@@ -7,7 +7,7 @@
     "n_shell": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/*.js",
     "changelog": "shelljs-changelog",
     "release:major": "shelljs-release major",
     "release:minor": "shelljs-release minor",
@@ -37,6 +37,7 @@
     "shelljs-plugin-sleep": "^0.2.1"
   },
   "devDependencies": {
+    "mocha": "^9.2.1",
     "shelljs-changelog": "^0.2.6",
     "shelljs-release": "^0.5.1"
   }
