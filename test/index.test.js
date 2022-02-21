@@ -8,6 +8,7 @@ const workDir = process.cwd();
 const nodeEntry = `${workDir}/index.js`;
 const temporaryFile = 'test/tempFile.txt';
 const testString = 'First line^^^^hip\nSecond line>>>>hip\nthird~~~hurray!\nLine number four.';
+const DEFAULT_TIMEOUT_MS = 5000;
 
 const runREPL = (child, commands) => new Promise((resolve) => {
   // Set up output and errors from stdin and stdout.
@@ -41,7 +42,9 @@ after(() => {
   }
 });
 
-describe('running commands inside REPL', () => {
+describe('running commands inside REPL', function () {
+  this.timeout(DEFAULT_TIMEOUT_MS);
+
   it('executes non-ShellJS commands', async () => {
     const inputCommands = [
       'function add(a, b) {',
@@ -80,7 +83,9 @@ describe('running commands inside REPL', () => {
   });
 });
 
-describe('running REPL commands in strict mode', () => {
+describe('running REPL commands in strict mode', function () {
+  this.timeout(DEFAULT_TIMEOUT_MS);
+
   const inputCommands = ['var undefined = 3;'];
   const strictModeErrMsg = 'Cannot assign to read only property \'undefined\'';
 
@@ -101,7 +106,9 @@ describe('running REPL commands in strict mode', () => {
   });
 });
 
-describe('respecting namespaces', () => {
+describe('respecting namespaces', function () {
+  this.timeout(DEFAULT_TIMEOUT_MS);
+
   it('says global commands are undefined in local namespace', async () => {
     const nShell = spawn('node', [nodeEntry, '--no_global']);
     const { code, output } = await runREPL(nShell, ['ls()', 'pwd()']);

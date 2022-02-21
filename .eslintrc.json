@@ -26,6 +26,7 @@
     "prefer-template": "off",
     "spaced-comment": ["error", "always", { "markers": ["@", "@include"], "exceptions": ["@"] }],
     "vars-on-top": "off",
+    "func-names": "off",
     "new-cap": ["error", {
       "capIsNewExceptions": [
         "ShellString"
